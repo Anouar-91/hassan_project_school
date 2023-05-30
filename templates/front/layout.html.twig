@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+
+	{{encore_entry_link_tags('app_front')}}
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech&family=WindSong&display=swap" rel="stylesheet">
+{% endblock %}
+{% block body %}
+
+	{% block navbar %}
+			<div class="">
+				{% include "front/blocks/navbar.html.twig" %}
+			</div>
+	{% endblock %}
+
+	{% block content %}
+		{% block banner%}{% endblock %}
+	{% endblock %}
+
+	{% block footer %}
+		{% include "front/blocks/footer.html.twig" %}
+	{% endblock %}
+
+
+	{% block javascripts %}
+		{{encore_entry_script_tags('app_front')}}
+
+	{% endblock %}
+{% endblock %}

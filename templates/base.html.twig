@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{asset('build/images/favicon.png')}}">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="theme-color" content="#ffffff">
+		<title>
+			{% block title %}{% endblock %}
+			| HASSAN</title>
+		<meta name="description" content="{% block description %}{% endblock %}"> {% block stylesheets %}{% endblock %}
+		</head>
+
+		<body>
+					<div id="flash-container">
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="alert alert-{{ label }} alert-dismissible fade show flash-notification" role="alert">
+					{{ message }}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			{% endfor %}
+		{% endfor %}
+	</div>
+			{% block body %}
+				{% block sidebar %}{% endblock %}
+				{% block navbar %}{% endblock %}
+				{% block content %}{% endblock %}
+				{% block footer %}{% endblock %}
+				{% block javascripts %}{% endblock %}
+			{% endblock %}
+		</body>
+
+	</html>

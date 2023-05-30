@@ -1,0 +1,50 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}
+	Se connecter
+{% endblock %}
+{% block description %}{% endblock %}
+
+{% block content %}
+	<div class="container mt-5">
+		<div class="text-center">
+
+			<h1 class="windSong" style="font-size:70px;">Mon compte</h1>
+<br>
+			<img src={{asset('build/images/divider-motif.png')}} alt="" class="img-fluid">
+		</div>
+		<section class="section-padding">
+
+
+			<div class="row align-items-center justify-content-center">
+
+				<div class="col-md-6">
+
+					<h1 class="h3 mb-3 font-weight-normal text-center">Je souhaite créer mon compte</h1>
+					<br>
+					{{ form_start(formRegister) }}
+					{{form_row(formRegister.firstname)}}
+
+					{{form_row(formRegister.lastname)}}
+
+					{{form_row(formRegister.phone)}}
+
+					{{form_row(formRegister.email)}}
+
+					{{form_row(formRegister.password)}}
+
+					{{ form_widget(formRegister) }}
+
+					<div class="text-center mt-3">
+						<button class="btn btn-primary">
+							S'inscrire
+						</button>
+					</div>
+					{{ form_end(formRegister) }}
+
+				</div>
+			</div>
+		</section>
+	</div>
+
+{% endblock %}

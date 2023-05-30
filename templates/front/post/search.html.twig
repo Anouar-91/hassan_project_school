@@ -1,0 +1,54 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}
+	Mes publications
+{% endblock %}
+{% block description %}{% endblock %}
+
+{% block content %}
+	<div class="container">
+				<h1>Gestion des annonces</h1>
+			<div class="shape"></div>
+
+			<div class="text-right mt-4 d-flex justify-content-end">
+				<a href="{{path('app_post-create')}}" class="btn btn-primary">
+					Ajouter une annonce
+				</a>
+			</div>
+		<table class="table table-hover mt-3">
+			<thead>
+				<tr>
+					<th scope="col">id</th>
+					<th scope="col"></th>
+
+					<th scope="col">titre</th>
+					<th scope="col">prix</th>
+					<th scope="col">lieu</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				{% for post in posts %}
+					<tr class="table-secondary">
+						<th scope="row">{{post.id}}</th>
+													<td><img src="{{ vich_uploader_asset(post, 'imageFile') }}" alt="" class="img-fluid image-search">
+										</td>
+						<td>{{post.title}}</td>
+						<td>{{post.price}}</td>
+						<td>{{post.location}}</td>
+						<td></td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5">Aucun enregistrement</td>
+					</tr>
+				{% endfor %}
+
+
+			</tbody>
+		</table>
+	</div>
+
+
+{% endblock %}

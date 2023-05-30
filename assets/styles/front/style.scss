@@ -1,0 +1,24 @@
+.form-group{
+    margin-bottom: 10px;
+}
+
+#flash-container {
+    position: fixed;
+    left: 15px;
+    top: 15px;
+    width: calc(100vw - 30px);
+    max-width: 500px;
+    z-index: 9999;
+
+    @media (max-width:  992px) {
+        top: 110px;
+    }
+}
+
+.image-search{
+    max-width: 100px;
+}
+
+.td-img{
+    max-width: 40px;
+}
