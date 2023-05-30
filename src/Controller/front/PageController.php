@@ -4,6 +4,7 @@ namespace App\Controller\front;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Repository\PostRepository;
 use Symfony\Component\Mime\Address;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -18,10 +19,20 @@ class PageController extends AbstractController
     /**
      * @Route("/", name="app_home")
      */
-    public function index(): Response
+    public function index(PostRepository $postRepository): Response
     {
         return $this->render('front/home.html.twig', [
-            'controller_name' => 'PageController',
+            'posts' => $postRepository->findBy([],["createdAt" => 'DESC']),
+        ]);
+    }
+    /**
+     * @Route("/annonce/{id}", name="app_post-detail")
+     */
+    public function postDetail($id, PostRepository $postRepo): Response
+    {        
+        $post = $postRepo->find($id);
+        return $this->render('front/postDetail.html.twig', [
+            'post' => $post,
         ]);
     }
   

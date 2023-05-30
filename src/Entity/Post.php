@@ -59,7 +59,7 @@ class Post
     private $user;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $imageName;
 
@@ -82,8 +82,6 @@ class Post
      * 
      * @var File
      * 
-    * @Assert\NotNull
-
      */
     private $imageFile;
 
@@ -162,7 +160,7 @@ class Post
         return $this->imageName;
     }
 
-    public function setImageName(string $imageName): self
+    public function setImageName(?string $imageName): self
     {
         $this->imageName = $imageName;
 

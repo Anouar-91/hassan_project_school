@@ -1,0 +1,30 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}
+	Fil d'actualité
+{% endblock %}
+{% block description %}{% endblock %}
+
+{% block content %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<img class="img-fluid" src="{{ vich_uploader_asset(post, 'imageFile') }}" alt="Card image cap">
+			</div>
+			<div class="col-md-6">
+			<h2>{{post.title}}</h2>
+			<p>{{post.description}}</p>
+			<p><strong>Lieu : </strong>{{post.location}}</p>
+			<p><h3>{{post.price}}€</h3></p>
+			<hr>
+				<h2>Information du vendeur</h2>
+				<p><strong>Prénom :</strong>{{post.user.firstname}} </p>
+				<p><strong>Nom : </strong>{{post.user.lastname}}</p>
+				<p><strong>Email : </strong>{{post.user.email}}</p>
+				<p><strong>Phone : </strong>{{post.user.phone}}</p>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

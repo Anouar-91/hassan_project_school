@@ -58,7 +58,48 @@ class PostController extends AbstractController
         ]);
     }
 
+        /**
+     * @Route("/update/{id}", name="app_post-update", methods="GET|POST")
+     */
+    public function update( $id,PostRepository $postRepo, Request $request): Response
+    {
+        $post = $postRepo->find($id);
 
+        $em = $this->manager->getManager();
+
+        $form = $this->createForm(PostType::class, $post);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $post->setUser($this->getUser());
+            $em->persist($post);
+            $em->flush();
+
+            return $this->redirectToRoute('app_post-search');
+        }
+
+        return $this->render('front/post/create.html.twig', [
+            'post' => $post,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+
+
+    /**
+     * @Route("/delete/{id}", name="app_post-delete")
+     */
+    public function delete($id, PostRepository $postRepo): Response
+    {
+            $post = $postRepo->find($id);
+            $msg = 'Enregistrement supprimé avec succès';
+            $em = $this->manager->getManager();
+            $em->remove($post);
+            $em->flush();
+            $this->addFlash('success', $msg);
+            return $this->redirectToRoute('app_post-search');
+    }
 
 
 
