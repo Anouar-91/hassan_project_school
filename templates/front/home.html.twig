@@ -7,6 +7,18 @@
 
 {% block content %}
 	<div class="container">
+		<div class="bg-banner">
+			<div class="row align-items-center">
+				<div class="col-md-8">
+					<h3>Le site d'annonce qui donne une deuxième chance à vos surplus et chute de matériaux.</h3>
+					<h5>Ne jetez plus, donnez</h5>
+					<h5>Ne stockez plus, vendez</h5>
+				</div>
+				<div class="col-md-4">
+					<a href="{{path('app_post-create')}}" class="btn btn-primary">Déposez une annonce</a>
+				</div>
+			</div>
+		</div>
 		<div class="row justify-content-center">
 			{% for post in posts %}
 				<div class="row justify-content-center">
